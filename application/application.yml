@@ -47,3 +47,5 @@ server:
 logging:
   file:
     shinyproxy.log
+networks:
+    name: sp-net
