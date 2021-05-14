@@ -11,23 +11,23 @@ proxy:
   # usage-stats-password: xxxx # influxdb password if needed
 
   #### OpenID Connect Authentication ####
-  authentication: openid # use openid auth framework
-  openid:
-    roles-claim: cognito:groups # use the groups value passed by AWS cognito to identify user groups
-    auth-url: # https://{cognito_domain_prefix}.auth.{region}.amazoncognito.com/oauth2/authorize
-    token-url: # https://{cognito_domain_prefix}.auth.{region}.amazoncognito.com/oauth2/token
-    jwks-url: # https://cognito-idp.{region}.amazonaws.com/{userPoolId}/.well-known/jwks.json
-    logout-url: # https://{cognito_domain_prefix}.auth.{region}.amazoncognito.com/logout?client_id={client_id}&logout_uri={your_host_url}
-    client-id:  # get this from AWS Cognito user pool management page
-    client-secret:  # get this from AWS Cognito user pool management page
+  #authentication: openid # use openid auth framework
+  #openid:
+  #  roles-claim: cognito:groups # use the groups value passed by AWS cognito to identify user groups
+  #  auth-url: # https://{cognito_domain_prefix}.auth.{region}.amazoncognito.com/oauth2/authorize
+  #  token-url: # https://{cognito_domain_prefix}.auth.{region}.amazoncognito.com/oauth2/token
+  #  jwks-url: # https://cognito-idp.{region}.amazonaws.com/{userPoolId}/.well-known/jwks.json
+  #  logout-url: # https://{cognito_domain_prefix}.auth.{region}.amazoncognito.com/logout?client_id={client_id}&logout_uri={your_host_url}
+  #  client-id:  # get this from AWS Cognito user pool management page
+  #  client-secret:  # get this from AWS Cognito user pool management page
   
   #### Simple Authentication ####
-  # authentication: simple
-  # admin-groups: admins
-  # users:
-  # - name: admin
-  #   password: admin
-  #   groups: admins
+  authentication: none
+   admin-groups: admins
+   users:
+   - name: admin
+     password: admin
+     groups: admins
   
   docker:
       internal-networking: true
@@ -37,7 +37,7 @@ proxy:
     - id: euler
       display-name: Euler's number
       container-cmd: ["R", "-e", "shiny::runApp('/root/euler')"]
-      container-image: YOUR_USERNAME/shiny-euler-app
+      container-image: bubanic25/shinyproxy-template
       access-groups: admins
       container-network: sp-net
 
