@@ -41,7 +41,4 @@ services:
   euler:
     image: YOUR_USERNAME/shiny-euler-app
 
-networks:
-  sp-net:
-    name: sp-net
     
