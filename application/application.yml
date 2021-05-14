@@ -37,7 +37,7 @@ proxy:
     - id: euler
       display-name: Euler's number
       container-cmd: ["R", "-e", "shiny::runApp('/root/euler')"]
-      container-image: bubanic25/shinyproxy-template
+      container-image: shinyproxy-template
       access-groups: admins
       container-network: sp-net
 
